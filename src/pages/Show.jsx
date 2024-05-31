@@ -33,7 +33,7 @@ const Show = () => {
             <p>Category: {bookmark.category}</p>
             <p>Favorite: {bookmark.is_favorite ? "true" : "false"}</p>
             <Link to={`/bookmarks/${id}/edit`}><button>EDIT</button></Link>
-            <button onClick={handleDelete}></button>
+            <button onClick={handleDelete}>DELETE</button>
         </div>
     );
 };
