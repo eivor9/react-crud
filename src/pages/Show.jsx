@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 const Show = () => {
     const { id } = useParams()
@@ -10,6 +10,11 @@ const Show = () => {
         category: "",
         is_favorite: false
     })
+    const navigate = useNavigate();
+
+    const handleDelete = () => {
+        fetch(`${API}/${id}`, {method: "DELETE"}).then(res => res.json()).then(() => navigate("/")).catch(err => console.log(err));
+    }
 
     useEffect(() => {
         //                      API                               ID
@@ -26,6 +31,9 @@ const Show = () => {
             <h3>{bookmark.name}</h3>
             <a href={bookmark.url} target="_blank">{bookmark.url}</a>
             <p>Category: {bookmark.category}</p>
+            <p>Favorite: {bookmark.is_favorite ? "true" : "false"}</p>
+            <Link to={`/bookmarks/${id}/edit`}><button>EDIT</button></Link>
+            <button onClick={handleDelete}></button>
         </div>
     );
 };

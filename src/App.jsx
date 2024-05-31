@@ -5,6 +5,7 @@ import About from './pages/About'
 import Show from './pages/Show'
 import New from './pages/New'
 import { Routes, Route } from 'react-router-dom'
+import Edit from './pages/Edit'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />}/>
         <Route path="/bookmarks/:id" element={ <Show /> } />
         <Route path="/new" element={ <New /> } />
+        <Route path="/bookmarks/:id/edit" element={ <Edit /> } />
       </Routes>
 
     </>
